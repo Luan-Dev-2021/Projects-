@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "bot_instagram",
+    "description": "luan extenssão chrome",
+    "version": "0.3",
+    "content_scripts": [{
+        "matches": [
+            "https://www.instagram.com/*"
+
+        ],
+        "js": [
+            "index.js"
+        ]
+    }]
+}
