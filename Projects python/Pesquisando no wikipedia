@@ -1,0 +1,19 @@
+import wikipedia    
+import pyttsx3
+fala = ('digite o que devo pesquisar no WIKIPEDIA')
+speak = pyttsx3.init('sapi5')
+print(' ')
+contr = 0
+while contr != "sair" :
+   speak.say(fala)
+   speak.runAndWait()
+   pesquisa = pesquisa = str(input('O que é: '))
+   print(' processando... ')
+   if pesquisa == "Sair":
+      contr = "sair"
+   else:
+      wikipedia.set_lang("pt")   
+      resultado=wikipedia.summary(pesquisa, sentences=1)
+      speak.say(resultado)
+      speak.runAndWait()
+
