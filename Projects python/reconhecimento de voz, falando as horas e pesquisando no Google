@@ -1,0 +1,33 @@
+import speech_recognition as sr
+import pyttsx3
+import os
+from datetime import datetime
+r = sr.Recognizer()
+speak = pyttsx3.init('sapi5')
+oo =0
+now = datetime.now()
+while oo !='sair':
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Pode falar")
+        audio = r.listen(source)
+    try:
+        fala = r.recognize_google(audio,language="pt-BR")
+        print("Você falou: ",fala)
+        
+    except sr.UnknownValueError:
+        oo = 'erro pp'
+    except sr.RequestError as e:
+        print('erro')
+        
+    if 'Que horas são' in fala:
+            hr = ('são {} horas e {} minutos'.format(now.hour,now.minute))
+            speak.say(hr)
+            speak.runAndWait()
+            
+    else:
+        er = ('Pesquisando no Google, informação sobre',fala)
+        speak.say(er)
+        speak.runAndWait()
+        os.startfile('https://www.google.com.br/search?biw=1366&bih=657&ei=7ePoW7jGHorDwASGlZToCQ&q={}'.format(fala))
+           
